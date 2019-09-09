@@ -1,0 +1,10 @@
+https://github.com/outstand/docker-tmux
+
+RUN CLIENT:
+docker run -it --rm --volumes-from tmux-server localtmux client
+
+RUN SERVER:
+docker run -d --rm -v /var/run/docker.sock:/var/run/docker.sock -v /storage:/storage -v /var/media:/var/media --name tmux-server localtmux server
+
+BUILD:
+docker build -t localtmux .

@@ -1,0 +1,77 @@
+version: "2"
+
+services:
+
+  medusa:
+    image: linuxserver/medusa
+    container_name: medusa
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/pi/medusa/config:/config
+      - /mnt/samba/shared:/shared
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+  deluge:
+    image: linuxserver/deluge:5b398f77-ls22
+    container_name: deluge
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/pi/deluge/config:/config
+      - /mnt/samba/shared/downloaded:/downloads
+      - /mnt/samba/shared/monitored/:/monitored
+    restart: unless-stopped
+
+  couchpotato:
+    image: linuxserver/couchpotato
+    container_name: couchpotato
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - UMASK_SET=022
+    volumes:
+      - /home/pi/couchpotato/config:/config
+      - /mnt/samba/shared:/shared
+    ports:
+      - 5050:5050
+    restart: unless-stopped
+
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/pi/sabnzbd/config:/config
+      - /mnt/samba/shared:/shared
+    ports:
+      - 8084:8080
+# https port
+      - 9443:9090
+    restart: unless-stopped
+
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/pi/heimdall:/config
+    ports:
+      - 8083:80
+      - 8443:443
+    restart: unless-stopped
