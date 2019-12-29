@@ -1,2 +1,3 @@
 #!/bin/sh
-rsync -av --delete --delete-excluded --exclude medusa/config/Logs/application.log* pi@kodi:sabnzbd pi@kodi:couchpotato pi@kodi:deluge pi@kodi:heimdall pi@kodi:medusa ./backup_apps/
+rsync -av --delete --delete-excluded --exclude-from=rsync_excludes  --files-from=rsync_sources -r pi@kodi: ./apps/
+cp ./apps/docker-compose.yml ./

@@ -1,0 +1,4 @@
+medusa/config/Logs/application.log*
+medusa/config/cache*
+couchpotato/config/data/cache
+couchpotato/config/data/logs
