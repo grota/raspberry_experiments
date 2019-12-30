@@ -3,4 +3,6 @@ couchpotato
 deluge
 heimdall
 medusa
+radarr
+jackett
 docker-compose.yml

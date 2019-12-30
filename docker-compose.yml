@@ -30,36 +30,65 @@ services:
       - /mnt/samba/shared/monitored/:/monitored
     restart: unless-stopped
 
-  couchpotato:
-    image: linuxserver/couchpotato
-    container_name: couchpotato
+#  couchpotato:
+#    image: linuxserver/couchpotato
+#    container_name: couchpotato
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Madrid
+#      - UMASK_SET=022
+#    volumes:
+#      - /home/pi/couchpotato/config:/config
+#      - /mnt/samba/shared:/shared
+#    ports:
+#      - 5050:5050
+#    restart: unless-stopped
+ 
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid
-      - UMASK_SET=022
     volumes:
-      - /home/pi/couchpotato/config:/config
-      - /mnt/samba/shared:/shared
+      - /home/pi/radarr/config:/config
+      - /mnt/samba/shared/kodi_videos/movies:/movies
+      - /mnt/samba/shared/downloaded/movies:/downloads
     ports:
-      - 5050:5050
+      - 7878:7878
     restart: unless-stopped
 
-  sabnzbd:
-    image: linuxserver/sabnzbd
-    container_name: sabnzbd
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid
     volumes:
-      - /home/pi/sabnzbd/config:/config
-      - /mnt/samba/shared:/shared
+      - /home/pi/jackett/config:/config
+      - /mnt/samba/shared/monitored:/downloads
     ports:
-      - 8084:8080
-# https port
-      - 9443:9090
+      - 9117:9117
     restart: unless-stopped
+ 
+#  sabnzbd:
+#    image: linuxserver/sabnzbd
+#    container_name: sabnzbd
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Madrid
+#    volumes:
+#      - /home/pi/sabnzbd/config:/config
+#      - /mnt/samba/shared:/shared
+#    ports:
+#      - 8084:8080
+## https port
+#      - 9443:9090
+#    restart: unless-stopped
 
 
   heimdall:
