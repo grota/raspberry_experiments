@@ -55,7 +55,7 @@ services:
     volumes:
       - /home/pi/radarr/config:/config
       - /mnt/samba/shared/kodi_videos/movies:/movies
-      - /mnt/samba/shared/downloaded/movies:/downloads
+      - /mnt/samba/shared/downloaded:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
