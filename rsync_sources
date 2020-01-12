@@ -1,8 +1,2 @@
-sabnzbd
-couchpotato
-deluge
-heimdall
-medusa
-radarr
-jackett
+configs
 docker-compose.yml
