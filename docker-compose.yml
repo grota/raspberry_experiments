@@ -57,8 +57,8 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - /home/pi/configs/radarr:/config
-      - /mnt/samba/shared/kodi_videos/movies:/movies
-      - /mnt/samba/shared/downloaded:/downloads
+#      - /mnt/samba/shared/kodi_videos/movies:/movies
+#      - /mnt/samba/shared/downloaded:/downloads
       - /mnt/samba/shared:/data
     ports:
       - 7878:7878
@@ -78,16 +78,16 @@ services:
       - 9117:9117
     restart: unless-stopped
  
-  heimdall:
-    image: linuxserver/heimdall
-    container_name: heimdall
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid
-    volumes:
-      - /home/pi/configs/heimdall:/config
-    ports:
-      - 8083:80
-      - 8443:443
-    restart: unless-stopped
+#  heimdall:
+#    image: linuxserver/heimdall
+#    container_name: heimdall
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Madrid
+#    volumes:
+#      - /home/pi/configs/heimdall:/config
+#    ports:
+#      - 8083:80
+#      - 8443:443
+#    restart: unless-stopped
