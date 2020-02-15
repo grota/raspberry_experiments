@@ -1,5 +1,10 @@
 configs/medusa/Logs/application.log*
-configs/medusa/cache*
+#configs/medusa/cache*
 configs/couchpotato/data/cache
 configs/couchpotato/data/logs
 configs/qbittorrent/data/qBittorrent/logs
+configs/couchpotato
+configs/deluge1.x
+configs/old_lsio_deluge2.x/
+configs/qbittorrent/
+configs/sabnzbd/
