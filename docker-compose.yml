@@ -139,23 +139,3 @@ services:
        max-file: "2"
        max-size: "10m"
        mode: non-blocking
-
-  pihole:
-    image: pihole/pihole:latest
-    environment:
-      TZ: 'Europe/Madrid'
-      WEBPASSWORD: ciccione
-      ServerIP: 192.168.0.159
-      #INTERFACE: eth0
-      #WEB_PORT: 6080
-      #IPv6: 'False'
-    volumes:
-      - $HOME/configs/pihole/etc/pihole:/etc/pihole/
-      - $HOME/configs/pihole/etc/dnsmasq.d:/etc/dnsmasq.d/
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
-    cap_add:
-      - NET_ADMIN
-    network_mode: host
-    restart: unless-stopped

@@ -1,3 +1,4 @@
 shared/system/configs
 docker-compose.yml
 .env
+pihole
